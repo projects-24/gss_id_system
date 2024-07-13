@@ -93,6 +93,7 @@ export default function UploadID() {
         if (response.status === 200) {
             setmessage('Profile image uploaded successfully!');
             setalert_state('success')
+            window.location.assign('/card/' + user.email)
           } else {
             setUploadMessage('Upload failed. Please try again.');
           }
@@ -109,7 +110,7 @@ if(user){
         <>
          {is_loading && <LoaderUi />}
          {alert_state && <AlertUi message={message} success={alert_state === 'success'} />}
-        <div className='margin-top-100'>
+        <div className='margin-top-100 padding-bottom-50'>
           <div className='width-400-max center fit'>
             <TextUi text={<>Welcome <span className="text-primary"> {user.name}</span></>} heading='h4' bold color='dark400' block />
             <TextUi text='Upload your profile picture' block />

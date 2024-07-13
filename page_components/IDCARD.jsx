@@ -1,6 +1,16 @@
-import React from 'react';
+'use client'
+import React, { useEffect } from 'react';
 
-const IDCARD = () => {
+const IDCARD = ({data}) => {
+
+  useEffect(() => {
+    if (data.profilePic) {
+      const img = `
+      <img src="data:image/png;base64,${data.profilePic}" alt="Profile Picture" class="photo" />
+    `
+      document.getElementById('profilePicture').innerHTML = img
+    }
+  },[data])
   return (
     <div className="padding-30 row-flex gap central">
       <div className="card">
@@ -17,15 +27,17 @@ const IDCARD = () => {
          <div className="text-bold margin-top-10">CROP CUTTING OPERATIONS</div>
          </div>
         </div>
-        <div className="photo-section">
+       <p>
+       <div className="photo-section" id='profilePicture'>
           <img src="/images/profile.jpg" alt="Field Officer Photo" className="photo" />
         </div>
         <div className="padding-top-20 padding-bottom-20">
           <div className="text-center">
-            <div className="text-bold h3">Mary Acheampong</div>
+            <div className="text-bold h3">{data.name}</div>
             <div>Field Officer</div>
           </div>
         </div>
+       </p>
         <div className="footer"></div>
       </div>
       <div className="card back_card article">
@@ -38,7 +50,7 @@ const IDCARD = () => {
             The Coordinator
             <div>Ghana Core Agriculture Surveys++</div>
             <div>(GCAS++)</div>
-            <div>Crop Cutting Operations</div>gi
+            <div>Crop Cutting Operations</div>
             <p>
               <div>P.O.BOX GP 1098,</div>
               <div>Accra</div>

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import AppBar from 'funuicss/ui/appbar/AppBar'
 import Logo from './Logo'
-import { PiChartBar, PiChartDonut, PiDeviceMobile, PiHouse, PiList, PiListDuotone, PiPhone, PiProjectorScreen, PiTable, PiTrendUp, PiUserPlus } from 'react-icons/pi'
+import { PiChartBar, PiChartDonut, PiDeviceMobile, PiHouse, PiImage, PiList, PiListDuotone, PiPhone, PiProjectorScreen, PiTable, PiTrendUp, PiUserPlus } from 'react-icons/pi'
 import RowFlexUi from './RowFlex'
 import Link from 'next/link'
 import TextUi from './Text'
@@ -24,13 +24,11 @@ export default function NavBar() {
   fixedTop
   left={<TextUi text="GSS ID Card System" heading='h4' bold color='dark400'/>}
   center={<RowFlexUi gap={2}>
-
-
-    {/* <Link href={'/data'}>
+    <Link href={'/upload'}>
    <RowFlexUi gap={0.2}>
-   <PiChartBar /> <TextUi text="Statistics" size='smaller' bold color='dark300' uppercase/> 
+   <PiImage /> <TextUi text="Upload" size='smaller' bold color='dark300' uppercase/> 
    </RowFlexUi> 
-    </Link> */}
+    </Link>
   </RowFlexUi>}
   right={<RowFlexUi gap={1}>
   <div>
