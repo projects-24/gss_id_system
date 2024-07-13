@@ -18,6 +18,7 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.card.front{overflow: hidden;}
 
 .header {
     color: #fff;
@@ -31,7 +32,12 @@
     border-top-right-radius: 1rem;
 }
 
-
+.printBtn{
+    position: fixed !important;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100;
+}
 
 .logos {
     display: flex;
