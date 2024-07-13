@@ -12,6 +12,7 @@ import { GetToken } from '@/function/Auth';
 import LoaderUi from '@/ui/LoaderUi';
 import AlertUi from '@/ui/Alert';
 import Alert from 'funuicss/ui/alert/Alert'
+import RowFlexUi from '@/ui/RowFlex';
 
 export default function UploadID() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -102,6 +103,7 @@ export default function UploadID() {
       }) 
   };
 
+  
 if(user){
     return (
         <>
@@ -109,8 +111,19 @@ if(user){
          {alert_state && <AlertUi message={message} success={alert_state === 'success'} />}
         <div className='margin-top-100'>
           <div className='width-400-max center fit'>
-            <TextUi text={'Welcome,' + user.name} heading='h4' bold color='dark400' block />
+            <TextUi text={<>Welcome <span className="text-primary"> {user.name}</span></>} heading='h4' bold color='dark400' block />
             <TextUi text='Upload your profile picture' block />
+            <SectionUI  gap={1}/>
+            <RowFlexUi gap={1} justify='space-between'>
+                <div>
+                <TextUi text={`REGION`} size='small' bold color='gradient' />
+                    <TextUi text={user.region} heading='h4' color='dark400' bold />
+                </div>
+                <div>
+                <TextUi text={`DISTRICT`} size='small' bold color='gradient' />
+                    <TextUi text={user.district} heading='h4' bold color='dark400' />
+                </div>
+            </RowFlexUi>
             <SectionUI />
                {previewUrl ? (
             <SectionUI gap={2}>
