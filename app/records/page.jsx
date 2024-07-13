@@ -81,7 +81,7 @@ body={
         FilterDocs().map((doc , i) => (
             <div className="col sm-12 md-6 lg-6 padding" key={i}>
               <center>
-              <CardFront data={doc}/>
+              <CardFront data={doc} profile={doc.profile_picture}/>
               </center>
             </div>
         ))
@@ -140,7 +140,7 @@ body={
                   <div>
                     {
                         data.profile_picture ?
-                        <img src={`data:image/png;base64,${data.profile_picture.data}`} className='height-50'/>
+                        <img src={`data:image/png;base64,${data.profile_picture}`} className='height-50'/>
                         : <div className="height-50 border padding roundEdgeSmall">
 
                         </div>

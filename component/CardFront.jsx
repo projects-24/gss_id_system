@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function CardFront({data}) {
+export default function CardFront({data, profile}) {
   return (
     <div><div className="card front">
     <div className="header">
@@ -18,7 +18,10 @@ export default function CardFront({data}) {
     </div>
    <p>
    <div className="photo-section" id='profilePicture'>
-      <img src="/images/profile.jpg" alt="Field Officer Photo" className="photo" />
+      {
+        profile ? <img src={`data:image/png;base64,${profile}`} alt="Field Officer Photo" className="photo" /> :
+        <div className="photo"></div>
+      }
     </div>
     <div className="padding-top-20 padding-bottom-20">
       <div className="text-center">
