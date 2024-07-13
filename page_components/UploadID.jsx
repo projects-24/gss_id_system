@@ -107,8 +107,8 @@ if(user){
         <>
          {is_loading && <LoaderUi />}
          {alert_state && <AlertUi message={message} success={alert_state === 'success'} />}
-        <FullCenteredPage>
-          <div className='width-400-max fit'>
+        <div className='margin-top-100'>
+          <div className='width-400-max center fit'>
             <TextUi text={'Welcome,' + user.name} heading='h4' bold color='dark400' block />
             <TextUi text='Upload your profile picture' block />
             <SectionUI />
@@ -141,7 +141,7 @@ if(user){
             <UiButton onClick={handleUpload} fullWidth bg={'primary'} raised endIcon={<PiPaperPlane />}>Submit</UiButton>
            
           </div>
-        </FullCenteredPage>
+        </div>
         </>
       );
 }else{
