@@ -49,8 +49,10 @@ export default function Record() {
     };
 
     const FilterDocs = () => {
-        let res = docs.filter(doc => doc.region === filter_region)
-        return  filter_region ? res : docs 
+        if(docs.length > 0){
+            let res = docs.filter(doc => doc.region === filter_region)
+            return  filter_region ? res : docs 
+        }
     }
     
 if(docs){
