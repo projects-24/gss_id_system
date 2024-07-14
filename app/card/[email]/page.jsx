@@ -38,6 +38,8 @@ export default function Profile({ params }) {
         </div>
       </div>
     );
+  }else{
+    return <LoaderUi />
   }
 
   // Handle cases where data is null (e.g., no profile found)
