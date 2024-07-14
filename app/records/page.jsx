@@ -90,28 +90,17 @@ export default function Record() {
     "Western" ,
     "Bono"]
 
+    const [print_data, setprint_data] = useState(false)
+
+    useEffect(() => {
+      window.addEventListener("dblclick", () => setprint_data(false))
+    }, [])
+    
+
+   if(!print_data) {
     return (
         <div>
-            <Modal 
-                animation="ScaleUp" 
-                duration={0.4} 
-                open={modal}
-                maxWidth="100vw"
-                close={<PiX className='pointer' onClick={() => setModal(false)} />}
-                body={
-                    <div>
-                        <div className="row central" ref={printRef}>
-                            {FilterDocs().map((doc, i) => (
-                                <div className="col sm-12 md-6 lg-6 padding margin-top-10" key={i}>
-                                    <center>
-                                        <CardFront data={doc} profile={doc.profilePic} />
-                                    </center>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                }
-            />
+       
             <NavBar />
             <div className="margin-top-100 padding-bottom-40">
                 <div className="container">
@@ -134,7 +123,7 @@ export default function Record() {
                                                 item && <option key={item} value={item}>{item}</option>
                                             ))}
                                         </select>
-                                        <UiButton bg='primary' rounded onClick={() => setModal(true)} text='Print' bold startIcon={<PiPrinter />} />
+                                        <UiButton bg='primary' rounded onClick={() => setprint_data(true)} text='Print' bold startIcon={<PiPrinter />} />
                                     </RowFlexUi>
                                 }
                                 funcss='text-smaller'
@@ -181,6 +170,21 @@ export default function Record() {
             <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
         </div>
     );
+   }else{
+    return (
+        <center>
+            <div className="row central" ref={printRef}>
+                    {FilterDocs().map((doc, i) => (
+                        <div className="col sm-12 md-6 lg-6 margin-top-10" key={i}>
+                            <center>
+                                <CardFront data={doc} profile={doc.profilePic} />
+                            </center>
+                        </div>
+                    ))}
+                </div>
+        </center>
+    )
+   }
 }
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
