@@ -23,7 +23,6 @@ export default function Record() {
     const [docs, setDocs] = useState([]);
     const [modal, setModal] = useState(false);
     const [filterRegion, setFilterRegion] = useState('');
-    const [allRegions, setAllRegions] = useState([]);
     const printRef = useRef();
     const [isLoading, setIsLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -35,8 +34,6 @@ export default function Record() {
             const res = await Axios.get(`${URI}/users?page=${page}&limit=20`);
             setDocs(res.data.users);
             setTotalPages(Math.ceil(res.data.total / 20));
-            const uniqueValues = Array.from(new Set(res.data.users.map(item => item['region'])));
-            setAllRegions(uniqueValues);
             setIsLoading(false);
         } catch (err) {
             console.error(err);
@@ -78,6 +75,21 @@ export default function Record() {
         return <LoaderUi />;
     }
 
+    const _regions = ["Ahafo" ,
+    "Upper West" ,
+    "Oti" ,
+    "Volta" ,
+    "Northern" ,
+    "Ashanti",
+    "region",
+    "Bono East",
+    "Greater Accra",
+    "Central",
+    "Eastern" ,
+    "Western North" ,
+    "Western" ,
+    "Bono"]
+
     return (
         <div>
             <Modal 
@@ -117,8 +129,9 @@ export default function Record() {
                                             }}
                                         >
                                             <option value="">All*</option>
-                                            {allRegions.map(item => (
-                                                item && <option key={item} value={item}>{item.toString()}</option>
+                                            
+                                            {_regions.map(item => (
+                                                item && <option key={item} value={item}>{item}</option>
                                             ))}
                                         </select>
                                         <UiButton bg='primary' rounded onClick={() => setModal(true)} text='Print' bold startIcon={<PiPrinter />} />
