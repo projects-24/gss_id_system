@@ -28,6 +28,13 @@ export default function Record() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
+    const [print_data, setprint_data] = useState(false)
+
+    useEffect(() => {
+      window.addEventListener("dblclick", () => setprint_data(false))
+    }, [])
+    
+    
     const fetchData = async (page) => {
         setIsLoading(true);
         try {
@@ -90,12 +97,7 @@ export default function Record() {
     "Western" ,
     "Bono"]
 
-    const [print_data, setprint_data] = useState(false)
 
-    useEffect(() => {
-      window.addEventListener("dblclick", () => setprint_data(false))
-    }, [])
-    
 
    if(!print_data) {
     return (
